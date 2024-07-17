@@ -27,11 +27,7 @@ fun App() {
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(
                     onClick = {
-                        lang = when (lang) {
-                            Language.English.isoFormat -> Language.Serbian.isoFormat
-                            Language.Serbian.isoFormat -> Language.English.isoFormat
-                            else -> Language.English.isoFormat
-                        }
+                        lang = switchLanguage(lang)
                         changeLang(lang)
                     }
                 ) {
@@ -42,5 +38,13 @@ fun App() {
                 Text(stringResource(Res.string.greetings))
             }
         }
+    }
+}
+
+private fun switchLanguage(lang: String) : String{
+    return when (lang) {
+        Language.English.isoFormat -> Language.Serbian.isoFormat
+        Language.Serbian.isoFormat -> Language.English.isoFormat
+        else -> Language.English.isoFormat
     }
 }
